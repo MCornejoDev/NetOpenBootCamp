@@ -9,7 +9,7 @@ namespace universityApiBackend.Models.DataModels
         [Required, StringLength(50)]
         public string Name { get; set; } = string.Empty;
 
-        [Required, StringLength(100)]
+        [Required, StringLength(280)]
         public string ShortDescription { get; set; } = string.Empty;
 
         [Required]
@@ -25,6 +25,6 @@ namespace universityApiBackend.Models.DataModels
         public string Requirements { get; set; } = string.Empty;
 
         [Required, EnumDataType(typeof(Levels))]
-        public Levels Levels { get; set; }
+        public Levels Levels { get; set; } = Levels.basic;
     }
 }
