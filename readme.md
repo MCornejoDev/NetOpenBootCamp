@@ -1,18 +1,26 @@
-#  Uso básico de dotnet ef para .NET 6
+# Guía básica de .NET 6
+
+## Instalación de la herramienta dotnet ef para .NET 6
+
+La instalación de la herramienta viene en el siguiente enlace [dotnet ef](https://docs.microsoft.com/es-es/ef/core/cli/dotnet).
+
+##  Uso básico de dotnet ef para .NET 6
 
 Para utilizar la tecnología ORM de .NET con EF es necesario en primer lugar crear dentro de nuestro proyecto
 dos carpetas llamadas DataAccess y Models, esta ultima también almacenará una carpeta DataModels que contendrá 
-las clases que se utilizará para la migración a la base de datos
+las clases que se utilizará para la migración a la base de datos.
 
-## Ejemplo : 
+### Ejemplo
 
 - **DataAccess**
   - **nombreDBContext.cs** 
     : Es el archivo principal que usará nuestro comando ef para añadir o actualizar nuestra base de datos.
-	    
-        //TODO: Add DbSets (Tables of our Data base)
-        public DbSet<User>? Users { get; set; }
-        public DbSet<Curso>? Curso { get; set; }
+
+```
+//TODO: Add DbSets (Tables of our Data base)
+public DbSet<User>? Users { get; set; }
+public DbSet<Curso>? Curso { get; set; }
+```
 
 - **Models**
   - **DataModels**
@@ -34,4 +42,29 @@ con diferentes archivos :
 Ya creada la carpeta con las migraciones, solo nos quedará hacer uso del comando siguiente 
 para ejecutar la migración con los cambios realizados.
 
-        dotnet ef database update 
+```
+dotnet ef database update 
+```
+
+## Uso básico de la herramienta dotnet-aspnet-codegenerator
+
+El código de la herramienta dotnet-aspnet-codegenerator lo podemos encontrar en el siguiente
+enlace [scaffolding](https://docs.microsoft.com/es-es/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio).
+La versión actual es la .NET 6 pero podría cambiar en un futuro.
+
+Para utilizar la herramienta de scaffolding de .NET, tendremos que añadir los siguientes
+paquetes de generación de código.
+
+```
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet tool install -g dotnet-aspnet-codegenerator
+```
+
+Para crear un controlador mediante scaffolding usando el motor de generación de código
+de .NET 6 haremos uso del siguiente comando
+
+```
+dotnet aspnet-codegenerator controller -name nombreController -async -api -m nombreModelo -dc nombreDBContext -outDir Controllers
+```
