@@ -10,7 +10,7 @@ using universityApiBackend.Models.DataModels;
 
 namespace universityApiBackend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]  // Controller for Request to https://localhost:7067/api/Users
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace universityApiBackend.Controllers
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: https://localhost:7067/api/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -32,7 +32,7 @@ namespace universityApiBackend.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: https://localhost:7067/api/users/1
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -50,7 +50,7 @@ namespace universityApiBackend.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: https://localhost:7067/api/users/1
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
@@ -81,7 +81,7 @@ namespace universityApiBackend.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: https://localhost:7067/api/users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
@@ -96,7 +96,7 @@ namespace universityApiBackend.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: https://localhost:7067/api/users/1
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
@@ -118,7 +118,7 @@ namespace universityApiBackend.Controllers
 
         private bool UserExists(int id)
         {
-            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Users?.Any(user => user.Id == id)).GetValueOrDefault();
         }
     }
 }
