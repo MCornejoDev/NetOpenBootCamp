@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace universityApiBackend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]")] //https://localhost:7067/weatherforecast
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -17,6 +17,8 @@ public class WeatherForecastController : ControllerBase
     {
         _logger = logger;
     }
+
+    // Method GET => Get to https://localhost:7067/weatherforecast
 
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
