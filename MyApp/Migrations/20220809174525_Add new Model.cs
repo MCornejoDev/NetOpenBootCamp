@@ -11,7 +11,7 @@ namespace UniversityApiBackend.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "IndexId",
-                table: "Curso",
+                table: "Course",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
@@ -36,13 +36,13 @@ namespace UniversityApiBackend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Curso_IndexId",
-                table: "Curso",
+                name: "IX_Course_IndexId",
+                table: "Course",
                 column: "IndexId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Curso_Index_IndexId",
-                table: "Curso",
+                name: "FK_Course_Index_IndexId",
+                table: "Course",
                 column: "IndexId",
                 principalTable: "Index",
                 principalColumn: "Id",
@@ -52,19 +52,19 @@ namespace UniversityApiBackend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Curso_Index_IndexId",
-                table: "Curso");
+                name: "FK_Course_Index_IndexId",
+                table: "Course");
 
             migrationBuilder.DropTable(
                 name: "Index");
 
             migrationBuilder.DropIndex(
-                name: "IX_Curso_IndexId",
-                table: "Curso");
+                name: "IX_Course_IndexId",
+                table: "Course");
 
             migrationBuilder.DropColumn(
                 name: "IndexId",
-                table: "Curso");
+                table: "Course");
         }
     }
 }

@@ -14,6 +14,6 @@ namespace UniversityApiBackend.Models.DataModels
         public DateTime Dob { get; set; }
 
         //Relaciones 
-        public ICollection<Curso> Cursos { get; set; } = new List<Curso>();
+        public ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }

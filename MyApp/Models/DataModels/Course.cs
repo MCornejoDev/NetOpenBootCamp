@@ -4,7 +4,7 @@ namespace UniversityApiBackend.Models.DataModels
 {
     public enum Levels { basic, intermediate, advanced }
 
-    public class Curso : BaseEntity
+    public class Course : BaseEntity
     {
         [Required, StringLength(50)]
         public string Name { get; set; } = string.Empty;

@@ -24,34 +24,34 @@ namespace UniversityApiBackend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CategoryCurso", b =>
+            modelBuilder.Entity("CategoryCourse", b =>
                 {
                     b.Property<int>("CategoriesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CursosId")
+                    b.Property<int>("CoursesId")
                         .HasColumnType("int");
 
-                    b.HasKey("CategoriesId", "CursosId");
+                    b.HasKey("CategoriesId", "CoursesId");
 
-                    b.HasIndex("CursosId");
+                    b.HasIndex("CoursesId");
 
-                    b.ToTable("CategoryCurso");
+                    b.ToTable("CategoryCourse");
                 });
 
-            modelBuilder.Entity("CursoStudent", b =>
+            modelBuilder.Entity("CourseStudent", b =>
                 {
-                    b.Property<int>("CursosId")
+                    b.Property<int>("CoursesId")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentsId")
                         .HasColumnType("int");
 
-                    b.HasKey("CursosId", "StudentsId");
+                    b.HasKey("CoursesId", "StudentsId");
 
                     b.HasIndex("StudentsId");
 
-                    b.ToTable("CursoStudent");
+                    b.ToTable("CourseStudent");
                 });
 
             modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Category", b =>
@@ -135,7 +135,7 @@ namespace UniversityApiBackend.Migrations
                     b.ToTable("Chapters");
                 });
 
-            modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Curso", b =>
+            modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -203,7 +203,7 @@ namespace UniversityApiBackend.Migrations
 
                     b.HasIndex("ChapterId");
 
-                    b.ToTable("Curso");
+                    b.ToTable("Course");
                 });
 
             modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Student", b =>
@@ -309,7 +309,7 @@ namespace UniversityApiBackend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CategoryCurso", b =>
+            modelBuilder.Entity("CategoryCourse", b =>
                 {
                     b.HasOne("UniversityApiBackend.Models.DataModels.Category", null)
                         .WithMany()
@@ -317,18 +317,18 @@ namespace UniversityApiBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UniversityApiBackend.Models.DataModels.Curso", null)
+                    b.HasOne("UniversityApiBackend.Models.DataModels.Course", null)
                         .WithMany()
-                        .HasForeignKey("CursosId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CursoStudent", b =>
+            modelBuilder.Entity("CourseStudent", b =>
                 {
-                    b.HasOne("UniversityApiBackend.Models.DataModels.Curso", null)
+                    b.HasOne("UniversityApiBackend.Models.DataModels.Course", null)
                         .WithMany()
-                        .HasForeignKey("CursosId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -339,7 +339,7 @@ namespace UniversityApiBackend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Curso", b =>
+            modelBuilder.Entity("UniversityApiBackend.Models.DataModels.Course", b =>
                 {
                     b.HasOne("UniversityApiBackend.Models.DataModels.Chapter", "Chapter")
                         .WithMany()

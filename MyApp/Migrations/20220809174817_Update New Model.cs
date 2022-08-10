@@ -10,12 +10,12 @@ namespace UniversityApiBackend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Curso_Index_IndexId",
-                table: "Curso");
+                name: "FK_Course_Index_IndexId",
+                table: "Course");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_CursoStudent_Student_StudentsId",
-                table: "CursoStudent");
+                name: "FK_CourseStudent_Student_StudentsId",
+                table: "CourseStudent");
 
             migrationBuilder.DropTable(
                 name: "Index");
@@ -30,13 +30,13 @@ namespace UniversityApiBackend.Migrations
 
             migrationBuilder.RenameColumn(
                 name: "IndexId",
-                table: "Curso",
+                table: "Course",
                 newName: "ChapterId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Curso_IndexId",
-                table: "Curso",
-                newName: "IX_Curso_ChapterId");
+                name: "IX_Course_IndexId",
+                table: "Course",
+                newName: "IX_Course_ChapterId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Students",
@@ -63,16 +63,16 @@ namespace UniversityApiBackend.Migrations
                 });
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Curso_Chapters_ChapterId",
-                table: "Curso",
+                name: "FK_Course_Chapters_ChapterId",
+                table: "Course",
                 column: "ChapterId",
                 principalTable: "Chapters",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CursoStudent_Students_StudentsId",
-                table: "CursoStudent",
+                name: "FK_CourseStudent_Students_StudentsId",
+                table: "CourseStudent",
                 column: "StudentsId",
                 principalTable: "Students",
                 principalColumn: "Id",
@@ -82,12 +82,12 @@ namespace UniversityApiBackend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Curso_Chapters_ChapterId",
-                table: "Curso");
+                name: "FK_Course_Chapters_ChapterId",
+                table: "Course");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_CursoStudent_Students_StudentsId",
-                table: "CursoStudent");
+                name: "FK_CourseStudent_Students_StudentsId",
+                table: "CourseStudent");
 
             migrationBuilder.DropTable(
                 name: "Chapters");
@@ -102,13 +102,13 @@ namespace UniversityApiBackend.Migrations
 
             migrationBuilder.RenameColumn(
                 name: "ChapterId",
-                table: "Curso",
+                table: "Course",
                 newName: "IndexId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Curso_ChapterId",
-                table: "Curso",
-                newName: "IX_Curso_IndexId");
+                name: "IX_Course_ChapterId",
+                table: "Course",
+                newName: "IX_Course_IndexId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Student",
@@ -135,16 +135,16 @@ namespace UniversityApiBackend.Migrations
                 });
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Curso_Index_IndexId",
-                table: "Curso",
+                name: "FK_Course_Index_IndexId",
+                table: "Course",
                 column: "IndexId",
                 principalTable: "Index",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CursoStudent_Student_StudentsId",
-                table: "CursoStudent",
+                name: "FK_CourseStudent_Student_StudentsId",
+                table: "CourseStudent",
                 column: "StudentsId",
                 principalTable: "Student",
                 principalColumn: "Id",

@@ -8,6 +8,6 @@ namespace UniversityApiBackend.Models.DataModels
         public string Name { get; set; } = string.Empty;
 
         //Relaciones
-        public ICollection<Curso> Cursos {get;set;} = new List<Curso>();
+        public ICollection<Course> Courses {get;set;} = new List<Course>();
     }
 }

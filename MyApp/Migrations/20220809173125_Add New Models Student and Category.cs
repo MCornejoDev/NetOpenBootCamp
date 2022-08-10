@@ -11,7 +11,7 @@ namespace UniversityApiBackend.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "ShortDescription",
-                table: "Curso",
+                table: "Course",
                 type: "nvarchar(280)",
                 maxLength: 280,
                 nullable: false,
@@ -62,47 +62,47 @@ namespace UniversityApiBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryCurso",
+                name: "CategoryCourse",
                 columns: table => new
                 {
                     CategoriesId = table.Column<int>(type: "int", nullable: false),
-                    CursosId = table.Column<int>(type: "int", nullable: false)
+                    CoursesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryCurso", x => new { x.CategoriesId, x.CursosId });
+                    table.PrimaryKey("PK_CategoryCourse", x => new { x.CategoriesId, x.CoursesId });
                     table.ForeignKey(
-                        name: "FK_CategoryCurso_Category_CategoriesId",
+                        name: "FK_CategoryCourse_Category_CategoriesId",
                         column: x => x.CategoriesId,
                         principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryCurso_Curso_CursosId",
-                        column: x => x.CursosId,
-                        principalTable: "Curso",
+                        name: "FK_CategoryCourse_Course_CoursesId",
+                        column: x => x.CoursesId,
+                        principalTable: "Course",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CursoStudent",
+                name: "CourseStudent",
                 columns: table => new
                 {
-                    CursosId = table.Column<int>(type: "int", nullable: false),
+                    CoursesId = table.Column<int>(type: "int", nullable: false),
                     StudentsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CursoStudent", x => new { x.CursosId, x.StudentsId });
+                    table.PrimaryKey("PK_CourseStudent", x => new { x.CoursesId, x.StudentsId });
                     table.ForeignKey(
-                        name: "FK_CursoStudent_Curso_CursosId",
-                        column: x => x.CursosId,
-                        principalTable: "Curso",
+                        name: "FK_CourseStudent_Course_CoursesId",
+                        column: x => x.CoursesId,
+                        principalTable: "Course",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CursoStudent_Student_StudentsId",
+                        name: "FK_CourseStudent_Student_StudentsId",
                         column: x => x.StudentsId,
                         principalTable: "Student",
                         principalColumn: "Id",
@@ -110,23 +110,23 @@ namespace UniversityApiBackend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryCurso_CursosId",
-                table: "CategoryCurso",
-                column: "CursosId");
+                name: "IX_CategoryCourse_CoursesId",
+                table: "CategoryCourse",
+                column: "CoursesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CursoStudent_StudentsId",
-                table: "CursoStudent",
+                name: "IX_CourseStudent_StudentsId",
+                table: "CourseStudent",
                 column: "StudentsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryCurso");
+                name: "CategoryCourse");
 
             migrationBuilder.DropTable(
-                name: "CursoStudent");
+                name: "CourseStudent");
 
             migrationBuilder.DropTable(
                 name: "Category");
@@ -136,7 +136,7 @@ namespace UniversityApiBackend.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ShortDescription",
-                table: "Curso",
+                table: "Course",
                 type: "nvarchar(100)",
                 maxLength: 100,
                 nullable: false,
