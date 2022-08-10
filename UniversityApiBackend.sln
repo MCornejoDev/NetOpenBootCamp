@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "universityApiBackend", "MyApp\universityApiBackend.csproj", "{21062718-4CFE-402A-8C55-8CFD68E67ACD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApiBackend", "MyApp\UniversityApiBackend.csproj", "{21062718-4CFE-402A-8C55-8CFD68E67ACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSnippets", "LinqSnippets\LinqSnippets.csproj", "{9CBE932C-D425-4A50-A1F3-B08505F1C0B2}"
 EndProject
