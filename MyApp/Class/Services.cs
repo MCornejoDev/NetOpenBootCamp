@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 using UniversityApiBackend.Models.DataModels;
 
-namespace Services
+namespace MyApp.Class
 {
     public class Services
     {
         // Buscar usuarios por email
-        static public User SearchUserByEmail(List<User> listUsers, string email) //Lista de usuarios y email
+        public User SearchUserByEmail(List<User> listUsers, string email) //Lista de usuarios y email
         {
             return listUsers.First(user => user.Email.Equals(email));
         }
@@ -45,5 +45,4 @@ namespace Services
         }
 
     }
-
 }
