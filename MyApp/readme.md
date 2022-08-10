@@ -29,7 +29,7 @@ public DbSet<Course>? Course { get; set; }
     - **User.cs** : Es una clase hija, la cuál contendrá las propiedades de BaseEntity.cs y sus propiedades propias.
 
 Una vez que hemos añadido las carpetas y archivos necesarios, haremos uso del comando 
-dotnet ef migrations add "Mensaje que aparecerá como nombre de la migración" , esto nos creará en nuestro proyecto una carpeta llamada Migrations
+```dotnet ef migrations add "Mensaje que aparecerá como nombre de la migración"``` , esto nos creará en nuestro proyecto una carpeta llamada Migrations
 con diferentes archivos :
 
 - **Migrations**
