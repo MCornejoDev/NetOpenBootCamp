@@ -7,7 +7,7 @@ namespace Services
 {
     public class Services
     {
-
+        static public void
     }
 
 }
