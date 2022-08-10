@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApiBackend", "MyA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSnippets", "LinqSnippets\LinqSnippets.csproj", "{9CBE932C-D425-4A50-A1F3-B08505F1C0B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{0E1B239D-9C93-40F6-A7F0-99912985C34F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,10 +24,6 @@ Global
 		{9CBE932C-D425-4A50-A1F3-B08505F1C0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBE932C-D425-4A50-A1F3-B08505F1C0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBE932C-D425-4A50-A1F3-B08505F1C0B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E1B239D-9C93-40F6-A7F0-99912985C34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E1B239D-9C93-40F6-A7F0-99912985C34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E1B239D-9C93-40F6-A7F0-99912985C34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E1B239D-9C93-40F6-A7F0-99912985C34F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
