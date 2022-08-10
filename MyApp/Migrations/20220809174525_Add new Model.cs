@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace universityApiBackend.Migrations
+namespace UniversityApiBackend.Migrations
 {
     public partial class AddnewModel : Migration
     {

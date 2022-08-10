@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using universityApiBackend.DataAccess;
-using universityApiBackend.Models.DataModels;
+using UniversityApiBackend.DataAccess;
+using UniversityApiBackend.Models.DataModels;
 
-namespace universityApiBackend.Controllers
+namespace UniversityApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

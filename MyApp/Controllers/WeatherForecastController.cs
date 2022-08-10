@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace universityApiBackend.Controllers;
+namespace UniversityApiBackend.Controllers;
 
 [ApiController]
 [Route("[controller]")] //https://localhost:7067/weatherforecast

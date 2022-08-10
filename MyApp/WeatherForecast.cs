@@ -1,4 +1,4 @@
-namespace universityApiBackend;
+namespace UniversityApiBackend;
 
 public class WeatherForecast
 {

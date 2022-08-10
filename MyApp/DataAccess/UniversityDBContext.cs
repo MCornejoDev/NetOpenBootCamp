@@ -1,8 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
-using universityApiBackend.Models.DataModels;
+using UniversityApiBackend.Models.DataModels;
 
-namespace universityApiBackend.DataAccess
+namespace UniversityApiBackend.DataAccess
 {
     public class UniversityDBContext : DbContext
     {

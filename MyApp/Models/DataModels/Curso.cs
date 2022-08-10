@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace universityApiBackend.Models.DataModels
+namespace UniversityApiBackend.Models.DataModels
 {
     public enum Levels { basic, intermediate, advanced }
 

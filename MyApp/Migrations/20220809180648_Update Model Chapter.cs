@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace universityApiBackend.Migrations
+namespace UniversityApiBackend.Migrations
 {
     public partial class UpdateModelChapter : Migration
     {

@@ -1,6 +1,6 @@
 // 1. Usings to work with EntityFramework
 using Microsoft.EntityFrameworkCore;
-using universityApiBackend.DataAccess;
+using UniversityApiBackend.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
