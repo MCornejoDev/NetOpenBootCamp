@@ -456,5 +456,60 @@ namespace LinqSnippets
                 }
             }
         }
+
+        static public void RelationLinq()
+        {
+            List<Post> posts = new List<Post>(){
+                new Post(){
+                    Id =1,
+                    Title = "My first Post",
+                    Content = "My first Content",
+                    Comments = new List<Comment>(){
+                        new Comment(){
+                            Id = 1,
+                            Created = DateTime.Now,
+                            Title = "My first Comment",
+                            Content = "My content"
+                        },
+                        new Comment(){
+                            Id = 2,
+                            Created = DateTime.Now,
+                            Title = "My second Comment",
+                            Content = "My content"
+                        }
+                    }
+                },
+                new Post(){
+                    Id = 2,
+                    Title = "My second Post",
+                    Content = "My second Content",
+                    Comments = new List<Comment>(){
+                        new Comment(){
+                            Id = 3,
+                            Created = DateTime.Now,
+                            Title = "My three Comment",
+                            Content = "My content"
+                        },
+                        new Comment(){
+                            Id = 4,
+                            Created = DateTime.Now,
+                            Title = "My four Comment",
+                            Content = "My content"
+                        }
+                    }
+                }
+            };
+
+
+            var commentsContent = posts.SelectMany(
+                post => post.Comments,
+                (post, comment) => new
+                {
+                    PostId = post.Id,
+                    CommentContent = comment.Content
+                });
+
+            
+        }
     }
 }
