@@ -242,22 +242,219 @@ namespace LinqSnippets
             var takeTwoLastValues = myList.TakeLast(2); // { 9,10 };
             var takeWhileSmallerThan4 = myList.TakeWhile(num => num < 4); // { 1,2,3 };
 
-            //TODO : 
-            
-            //Variables
+        }
 
-            //ZIP
+        //Paging with Skip & Take
+        static public IEnumerable<T> GetPage<T>(IEnumerable<T> collection, int pageNumber, int resultsPerPage)
+        {
+            int startIndex = (pageNumber - 1) * resultsPerPage;
+            return collection.Skip(startIndex).Take(resultsPerPage);
+        }
 
-            //Repeat
+        //Variables
+        static public void LinqVariables()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            //ALL
+            var aboveAverage = from number in numbers
+                               let average = numbers.Average()
+                               let nSquare = Math.Pow(number, 2)
+                               where nSquare > average
+                               select number;
 
-            //Aggregate
+            System.Console.WriteLine("Average : {0}", numbers.Average());
 
-            //Distinc
+            foreach (int number in aboveAverage)
+            {
+                Console.WriteLine("Query: Number : {0} Square: {1}", number, Math.Pow(number, 2));
+            }
+        }
 
-            //GroupBy
+        //ZIP
+        static public void ZipLinq()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            string[] stringNumbers = { "one", "two", "three", "four", "five" };
 
+            IEnumerable<string> zipNumbers = numbers.Zip(stringNumbers, (number, word) => number + "=" + word);
+
+            // ("1=one","2=two","3=three","4=four","5=five")
+        }
+
+        //Repeat & Range
+        static public void RepeatRangeLinq()
+        {
+            //Generate collection from 1 to 1000 --> RANGE
+            IEnumerable<int> first100 = Enumerable.Range(1, 1000);
+
+            // var aboveAverage = from number in first100
+            //                    select number;
+
+            //Repeat a value N times
+            IEnumerable<string> fiveXs = Enumerable.Repeat("X", 5); // { "X","X","X","X","X" }
+        }
+
+        static public void StudentsLinq()
+        {
+            var classRoom = new[]{
+                new Student{
+                    Id = 1,
+                    Name = "Miguel",
+                    Grade = 90,
+                    Certified = true,
+                },
+                new Student{
+                    Id = 2,
+                    Name = "Juan",
+                    Grade = 50,
+                    Certified = false,
+                },
+                new Student{
+                    Id = 3,
+                    Name = "Ana",
+                    Grade = 96,
+                    Certified = true,
+                },
+                 new Student{
+                    Id = 4,
+                    Name = "Alvaro",
+                    Grade = 10,
+                    Certified = false,
+                },
+                 new Student{
+                    Id = 5,
+                    Name = "Pedro",
+                    Grade = 50,
+                    Certified = true,
+                }
+            };
+
+            var certifiedStudents = from student in classRoom
+                                    where student.Certified
+                                    select student;
+
+            var notCertifiedStudents = from student in classRoom
+                                       where student.Certified == false
+                                       select student;
+
+            var approvedStudents = from student in classRoom
+                                   where student.Grade >= 50 && student.Certified
+                                   select student;
+
+            var approvedStudentsName = from student in classRoom
+                                       where student.Grade >= 50 && student.Certified
+                                       select student.Name;
+        }
+
+        //ALL
+        static public void AllLinq()
+        {
+            var numbers = new List<int>() { 1, 2, 3, 4, 5 };
+            bool allAreSmallerThan10 = numbers.All(x => x < 10); // true
+            bool allAreBiggerOrEqueal2 = numbers.All(x => x >= 2); // false
+
+            var emptyList = new List<int>();
+
+            bool allNumbersAreGreaterThan0 = numbers.All(x => x >= 0); // true
+        }
+
+        //Aggregate
+        static public void aggregateQueries()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //Sum all numbers
+            int sum = numbers.Aggregate((prevSum, current) => prevSum + current);
+
+            // 0, 1 => 1
+            // 1, 2 => 3
+            // 3, 3 => 6
+            // etc...
+
+            string[] words = { "hello,", "my", "name", "is", "Miguel" }; // hello, my name is Miguel
+            string greeting = words.Aggregate((prevGreeting, current) => prevGreeting + current);
+
+            // "", "hello,"
+            // "hello,", "my,"
+            // "hello, my", "name"
+            // etc...
+        }
+
+        //Distinc
+        static public void DistincValues()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
+            IEnumerable<int> distinctValues = numbers.Distinct();
+        }
+
+        //GroupBy
+        static public void GroupByExample()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            //Obtanin only even numbers and generate two groups
+            var grouped = numbers.GroupBy(x => x % 2 == 0);
+
+            //We will have two groups:
+            //1. The group that doesnt fit the condition (Odd numbers)
+            //2. The group that fits the condition (Even numbers)
+
+            foreach (var group in grouped)
+            {
+                foreach (var value in group)
+                {
+                    Console.WriteLine(value); // 1,3,5,7,9 ... 2,4,6,8 (first the odds and then the even)
+                }
+            }
+
+            //Another Example
+            var classRoom = new[]{
+                new Student{
+                    Id = 1,
+                    Name = "Miguel",
+                    Grade = 90,
+                    Certified = true,
+                },
+                new Student{
+                    Id = 2,
+                    Name = "Juan",
+                    Grade = 50,
+                    Certified = false,
+                },
+                new Student{
+                    Id = 3,
+                    Name = "Ana",
+                    Grade = 96,
+                    Certified = true,
+                },
+                 new Student{
+                    Id = 4,
+                    Name = "Alvaro",
+                    Grade = 10,
+                    Certified = false,
+                },
+                 new Student{
+                    Id = 5,
+                    Name = "Pedro",
+                    Grade = 50,
+                    Certified = true,
+                }
+            };
+
+            var certifiedQuery = classRoom.GroupBy(student => student.Certified && student.Grade >= 50);
+
+            //We obtain two groups 
+            // 1º Not certified students
+            // 2º Certified students
+
+            foreach (var group in certifiedQuery)
+            {
+                Console.WriteLine("----------- {0} ---------", group.Key);
+                foreach (var student in group)
+                {
+                    Console.WriteLine(student.Name);
+                }
+            }
         }
     }
 }
