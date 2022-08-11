@@ -1,0 +1,18 @@
+using UniversityApiBackend.Models.DataModels;
+
+namespace UniversityApiBackend.Services
+{
+    public class StudentsService : IStudentsService
+    {
+        //TODO : resolve Methods
+        public IEnumerable<Student> GetStudentsWithCourses()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Student> GetStudentsWithNotCourses()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
