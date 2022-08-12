@@ -14,5 +14,10 @@ namespace UniversityApiBackend.Services
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Student> GetStudentsFromCertainCourse(int IdCourse)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -54,6 +54,13 @@ namespace UniversityApiBackend.Controllers
             return chapter;
         }
 
+        // // GET: api/Chapters/5
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Chapter>> GetChapterFromCertainCourse(int IdCourse)
+        // {
+            
+        // }
+
         // PUT: api/Chapters/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

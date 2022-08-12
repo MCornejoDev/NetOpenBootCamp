@@ -4,6 +4,6 @@ namespace UniversityApiBackend.Services
 {
     public interface IChaptersService
     {
-
+        IEnumerable<Chapter> GetChaptersFromCertainCourse(int IdCourse);
     }
 }

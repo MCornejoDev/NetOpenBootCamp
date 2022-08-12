@@ -19,7 +19,7 @@ namespace UniversityApiBackend.Controllers
         //Service 
         private readonly IStudentsService _studentService;
 
-        public StudentsController(UniversityDBContext context,IStudentsService studentsService)
+        public StudentsController(UniversityDBContext context, IStudentsService studentsService)
         {
             _context = context;
             _studentService = studentsService;
@@ -29,10 +29,10 @@ namespace UniversityApiBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
-          if (_context.Students == null)
-          {
-              return NotFound();
-          }
+            if (_context.Students == null)
+            {
+                return NotFound();
+            }
             return await _context.Students.ToListAsync();
         }
 
@@ -40,10 +40,10 @@ namespace UniversityApiBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(int id)
         {
-          if (_context.Students == null)
-          {
-              return NotFound();
-          }
+            if (_context.Students == null)
+            {
+                return NotFound();
+            }
             var student = await _context.Students.FindAsync(id);
 
             if (student == null)
@@ -53,6 +53,22 @@ namespace UniversityApiBackend.Controllers
 
             return student;
         }
+
+        //GET: api/Students/ {que nombre de variable hay que darle}--> Students with not courses
+        // [HttpGet]//[HttpGet("{que nombre de variable hay que darle}")]
+        // public async Task<ActionResult<Student>> GetStudentsWithNotCourses()
+        // {
+        //     var students = await _studentService.GetStudentsWithNotCourses();
+        //     return students;
+        // }
+
+        //GET : api/Students/5
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Student>> GetStudentsFromCertainCourse(int id)
+        // {
+        //     var students = await _studentService.GetStudentsFromCertainCourse(id);
+        //     return students;
+        // }
 
         // PUT: api/Students/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -90,10 +106,10 @@ namespace UniversityApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
-          if (_context.Students == null)
-          {
-              return Problem("Entity set 'UniversityDBContext.Students'  is null.");
-          }
+            if (_context.Students == null)
+            {
+                return Problem("Entity set 'UniversityDBContext.Students'  is null.");
+            }
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
 

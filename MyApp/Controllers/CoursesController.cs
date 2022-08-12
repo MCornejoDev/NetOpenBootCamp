@@ -15,7 +15,7 @@ namespace UniversityApiBackend.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
-        private readonly UniversityDBContext _context; 
+        private readonly UniversityDBContext _context;
         //Service 
         private readonly ICoursesService _courseService;
 
@@ -29,10 +29,10 @@ namespace UniversityApiBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-          if (_context.Course == null)
-          {
-              return NotFound();
-          }
+            if (_context.Course == null)
+            {
+                return NotFound();
+            }
             return await _context.Course.ToListAsync();
         }
 
@@ -40,10 +40,10 @@ namespace UniversityApiBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Course>> GetCourse(int id)
         {
-          if (_context.Course == null)
-          {
-              return NotFound();
-          }
+            if (_context.Course == null)
+            {
+                return NotFound();
+            }
             var course = await _context.Course.FindAsync(id);
 
             if (course == null)
@@ -53,6 +53,31 @@ namespace UniversityApiBackend.Controllers
 
             return course;
         }
+
+        // GET: api/Courses/category
+        // [HttpGet("{category}")]
+        // public async Task<ActionResult<Course>> GetCourse(string category)
+        // {
+        //     // var course = await _courseService.GetCoursesFromCertainCategory(category); 
+        //     // return course;
+            
+        // }
+
+        //GET: api/Courses/ {que nombre de variable hay que darle}--> Courses with not chapters
+        // [HttpGet]//[HttpGet("{que nombre de variable hay que darle}")]
+        // public async Task<ActionResult<Course>> GetCourseWithNotChapters()
+        // {
+        //     var course = await _courseService.GetCoursesWihtNotChapters();
+        //     return course;
+        // }
+
+        //GET: api/Courses/ {que nombre de variable hay que darle}--> Courses with not students
+        // [HttpGet]//[HttpGet("{que nombre de variable hay que darle}")]
+        // public async Task<ActionResult<Course>> GetCoursesWithNotStudents()
+        // {
+        //     var course = await _courseService.GetCoursesWithNotStudents();
+        //     return course;
+        // }
 
         // PUT: api/Courses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -90,10 +115,10 @@ namespace UniversityApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
-          if (_context.Course == null)
-          {
-              return Problem("Entity set 'UniversityDBContext.Course'  is null.");
-          }
+            if (_context.Course == null)
+            {
+                return Problem("Entity set 'UniversityDBContext.Course'  is null.");
+            }
             _context.Course.Add(course);
             await _context.SaveChangesAsync();
 
