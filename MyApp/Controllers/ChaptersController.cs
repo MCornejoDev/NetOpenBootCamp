@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UniversityApiBackend.DataAccess;
 using UniversityApiBackend.Models.DataModels;
+using UniversityApiBackend.Services;
 
 namespace UniversityApiBackend.Controllers
 {
@@ -15,20 +16,23 @@ namespace UniversityApiBackend.Controllers
     public class ChaptersController : ControllerBase
     {
         private readonly UniversityDBContext _context;
+        //Service 
+        private readonly IChaptersService _chapterService;
 
-        public ChaptersController(UniversityDBContext context)
+        public ChaptersController(UniversityDBContext context, IChaptersService chaptersService)
         {
             _context = context;
+            _chapterService = chaptersService;
         }
 
         // GET: api/Chapters
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Chapter>>> GetChapters()
         {
-          if (_context.Chapters == null)
-          {
-              return NotFound();
-          }
+            if (_context.Chapters == null)
+            {
+                return NotFound();
+            }
             return await _context.Chapters.ToListAsync();
         }
 
@@ -36,10 +40,10 @@ namespace UniversityApiBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Chapter>> GetChapter(int id)
         {
-          if (_context.Chapters == null)
-          {
-              return NotFound();
-          }
+            if (_context.Chapters == null)
+            {
+                return NotFound();
+            }
             var chapter = await _context.Chapters.FindAsync(id);
 
             if (chapter == null)
@@ -86,10 +90,10 @@ namespace UniversityApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Chapter>> PostChapter(Chapter chapter)
         {
-          if (_context.Chapters == null)
-          {
-              return Problem("Entity set 'UniversityDBContext.Chapters'  is null.");
-          }
+            if (_context.Chapters == null)
+            {
+                return Problem("Entity set 'UniversityDBContext.Chapters'  is null.");
+            }
             _context.Chapters.Add(chapter);
             await _context.SaveChangesAsync();
 
