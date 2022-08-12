@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UniversityApiBackend.Models.DataModels;
 
-namespace MyApp.Class
+namespace UniversityApiBackend.Class
 {
     public class Services
     {
