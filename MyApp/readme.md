@@ -68,3 +68,9 @@ de .NET 6 haremos uso del siguiente comando
 ```
 dotnet aspnet-codegenerator controller -name nombreController -async -api -m nombreModelo -dc nombreDBContext -outDir Controllers
 ```
+
+Para crear un controlador vacío de tipo Api usando el motor de generación de código de .NET 6 haremos uso del siguiente comando 
+
+```
+dotnet aspnet-codegenerator controller -name AccountController -api -nv -outDir Controllers
+```
