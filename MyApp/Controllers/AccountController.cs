@@ -7,7 +7,7 @@ using UniversityApiBackend.Helpers;
 
 namespace UniversityApiBackend.Controllers
 {
-    [Route("api/[controller]/{action}")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -16,7 +16,9 @@ namespace UniversityApiBackend.Controllers
         {
             _jwtSettings = jwtSettings;
         }
-
+        
+        //Example Users
+        //TODO: Change by real users in DB
         private IEnumerable<User> Logins = new List<User>(){
             new User()
             {
