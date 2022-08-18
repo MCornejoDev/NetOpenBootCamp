@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UniversityApiBackend.Models.DataModels
 {
+    public enum Roles { administrator, user }
     public class User : BaseEntity
     {
         [Required, StringLength(50)]
@@ -16,5 +17,7 @@ namespace UniversityApiBackend.Models.DataModels
         [Required]
         public string Password { get; set; } = string.Empty;
 
+        [Required, EnumDataType(typeof(Roles))]
+        public Roles Roles { get; set; } = Roles.user;
     }
 }
