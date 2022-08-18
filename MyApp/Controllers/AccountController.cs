@@ -46,20 +46,26 @@ namespace UniversityApiBackend.Controllers
                 var Token = new UserTokens();
 
                 // TODO :
-                // Search a user with LINQ
-                // var searchUser = await _context.Users.FindAsync(userLogin.UserName);
+                // Search a user in context with LINQ
 
-                var Valid = Logins.Any(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
+                // We are searching one user through UserName && Password
+                var searchUser = (from user in _context.Users
+                                  where user.Name == userLogin.UserName
+                                  && user.Password == userLogin.Password
+                                  select user).FirstOrDefault();
 
-                if (Valid)
+                // TODO: Change to searchUser
+                // var Valid = Logins.Any(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
+
+                if (searchUser is not null) // Other operation is (searchUser != null) while the equality operator is not overloaded
                 {
-                    var user = Logins.FirstOrDefault(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
+                    // var user = Logins.FirstOrDefault(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
 
                     Token = JwtHelpers.GenTokenKey(new UserTokens()
                     {
-                        UserName = user.Name,
-                        EmailId = user.Email,
-                        Id = user.Id,
+                        UserName = searchUser.Name,
+                        EmailId = searchUser.Email,
+                        Id = searchUser.Id,
                         GuidId = Guid.NewGuid()
                     }, _jwtSettings);
                 }
@@ -80,7 +86,12 @@ namespace UniversityApiBackend.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public IActionResult GetUserList()
         {
-            return Ok(Logins);
+            // We are searching all Users
+            // var searchUsers = _context.Users.ToList();
+            var searchUsers = from user in _context.Users
+                              select user;
+
+            return Ok(searchUsers);
         }
     }
 }
