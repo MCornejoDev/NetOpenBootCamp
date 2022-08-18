@@ -45,6 +45,8 @@ namespace UniversityApiBackend.Controllers
             {
                 var Token = new UserTokens();
 
+                // TODO :
+                // Search a user with LINQ
                 // var searchUser = await _context.Users.FindAsync(userLogin.UserName);
 
                 var Valid = Logins.Any(user => user.Name.Equals(userLogin.UserName, StringComparison.OrdinalIgnoreCase));
