@@ -22,7 +22,11 @@ builder.Services.AddJwtTokenServices(builder.Configuration);
 builder.Services.AddControllers();
 
 // 4. Add Custom Services (folder Services)
+builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+builder.Services.AddScoped<IChaptersService, ChaptersService>();
+builder.Services.AddScoped<ICoursesService, CoursesService>();
 builder.Services.AddScoped<IStudentsService, StudentsService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 // TODO: Add the rest of services
 
 // 8. Add Authorization
